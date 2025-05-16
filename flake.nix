@@ -31,18 +31,18 @@
               # https://devenv.sh/packages/
               packages = with pkgs; [
                 git
+                libglvnd
                 libxkbcommon
                 qt5.qtbase
                 qt5.qtwayland
-                libglvnd
                 xorg.libX11
                 xorg.libxcb
                 xorg.libXext
                 xorg.libXfixes
                 xorg.libXi
+                xorg.libXrandr
                 xorg.libXrender
                 xorg.libXtst
-                xorg.libXrandr
               ];
 
               android = {
@@ -95,6 +95,7 @@
                 export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
                 # Qt platform plugin fix
                 export QT_QPA_PLATFORM_PLUGIN_PATH=${pkgs.qt5.qtbase}/lib/qt-5.15/plugins/platforms
+                export LD_LIBRARY_PATH=${pkgs.qt5.qtbase}/lib:${pkgs.xorg.libX11}/lib:${pkgs.xorg.libxcb}/lib:${pkgs.libxkbcommon}/lib:${pkgs.libglvnd}/lib:$LD_LIBRARY_PATH
 
                 # Create a symbolic link to the '8.0' directory named 'latest' if it doesn't exist
                 # I added this link in to stop `flutter doctor` complaining - not that it matters really

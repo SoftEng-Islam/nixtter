@@ -93,10 +93,11 @@
                 export CHROME_EXECUTABLE=$(which chromium)
                 export ANDROID_HOME=$(which android | sed -E 's/(.*libexec\/android-sdk).*/\1/')
                 export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+
                 # Qt platform plugin fix
-                # export QT_QPA_PLATFORM_PLUGIN_PATH=${pkgs.qt5.qtbase}/lib/qt-5.15/plugins/platforms
-                # export QT_QPA_PLATFORM_PLUGIN_PATH=${pkgs.qt5.qtbase.dev}/lib/qt-5.15/plugins/platforms
-                export QT_QPA_PLATFORM_PLUGIN_PATH=${pkgs.qt5.qtbase.out}/lib/qt-5.15/plugins/platforms
+                export QT_QPA_PLATFORM_PLUGIN_PATH=${pkgs.libsForQt5.qt5.qtbase}/lib/qt-5.15.16/plugins/platforms
+
+                export QT_PLUGIN_PATH=$(dirname "$QT_QPA_PLATFORM_PLUGIN_PATH")
 
                 export LD_LIBRARY_PATH=${pkgs.qt5.qtbase}/lib:${pkgs.xorg.libX11}/lib:${pkgs.xorg.libxcb}/lib:${pkgs.libxkbcommon}/lib:${pkgs.libglvnd}/lib:$LD_LIBRARY_PATH
 

@@ -94,7 +94,10 @@
                 export ANDROID_HOME=$(which android | sed -E 's/(.*libexec\/android-sdk).*/\1/')
                 export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
                 # Qt platform plugin fix
-                export QT_QPA_PLATFORM_PLUGIN_PATH=${pkgs.qt5.qtbase}/lib/qt-5.15/plugins/platforms
+                # export QT_QPA_PLATFORM_PLUGIN_PATH=${pkgs.qt5.qtbase}/lib/qt-5.15/plugins/platforms
+                export QT_QPA_PLATFORM_PLUGIN_PATH=${pkgs.qt5.qtbase.dev}/lib/qt-5.15/plugins/platforms
+                # export QT_QPA_PLATFORM_PLUGIN_PATH=${pkgs.qt5.qtbase.out}/lib/qt-5.15/plugins/platforms
+
                 export LD_LIBRARY_PATH=${pkgs.qt5.qtbase}/lib:${pkgs.xorg.libX11}/lib:${pkgs.xorg.libxcb}/lib:${pkgs.libxkbcommon}/lib:${pkgs.libglvnd}/lib:$LD_LIBRARY_PATH
 
                 # Create a symbolic link to the '8.0' directory named 'latest' if it doesn't exist

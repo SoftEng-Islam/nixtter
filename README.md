@@ -9,7 +9,7 @@ This environment provides a working light flutter environment that will give you
 I tested this from NixOS - but it should work from nix with devenv on other OSes as well.
 
 ```bash
-➜  flutter git:(main) ✗ flutter doctor   
+➜  flutter git:(main) ✗ flutter doctor
 Doctor summary (to see all details, run flutter doctor -v):
 [✓] Flutter (Channel stable, 3.19.0, on NixOS 24.11 (Vicuna) 6.6.41, locale
     en_NZ.UTF-8)
@@ -33,7 +33,7 @@ For further notes refer to the [devenv.sh](https://devenv.sh/integrations/androi
 
 ```bash
 # create an android emulator
-avdmanager create avd -n android-simple -k "system-images;android-32;google_apis_playstore;x86_64"
+avdmanager create avd -n android-simple -k "system-images;android-34;google_api;x86_64"
 
 # run the emulator
 emulator -avd android-simple
@@ -53,7 +53,7 @@ I used the following 2
 
 ## Once in VS code
 
-Creating a quick "Hello World" Flutter app and checking if your environment is working properly involves a few steps. 
+Creating a quick "Hello World" Flutter app and checking if your environment is working properly involves a few steps.
 
 Open VS Code:
 

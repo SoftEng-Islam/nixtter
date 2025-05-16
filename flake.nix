@@ -29,7 +29,21 @@
               # https://devenv.sh/reference/options/
 
               # https://devenv.sh/packages/
-              packages = with pkgs; [ git ];
+              packages = with pkgs; [
+                git
+                libxkbcommon
+                qt5.qtbase
+                qt5.qtwayland
+                libglvnd
+                xorg.libX11
+                xorg.libxcb
+                xorg.libXext
+                xorg.libXfixes
+                xorg.libXi
+                xorg.libXrender
+                xorg.libXtst
+                xorg.libXrandr
+              ];
 
               android = {
                 enable = true;
@@ -79,6 +93,8 @@
                 export CHROME_EXECUTABLE=$(which chromium)
                 export ANDROID_HOME=$(which android | sed -E 's/(.*libexec\/android-sdk).*/\1/')
                 export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+                # Qt platform plugin fix
+                export QT_QPA_PLATFORM_PLUGIN_PATH=${pkgs.qt5.qtbase}/lib/qt-5.15/plugins/platforms
 
                 # Create a symbolic link to the '8.0' directory named 'latest' if it doesn't exist
                 # I added this link in to stop `flutter doctor` complaining - not that it matters really

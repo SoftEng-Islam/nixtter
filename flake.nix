@@ -95,11 +95,8 @@
                 export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
 
                 # Qt platform plugin fix
-                export QT_QPA_PLATFORM_PLUGIN_PATH=${pkgs.libsForQt5.qt5.qtbase}/lib/qt-5.15.16/plugins/platforms
-
-                export QT_PLUGIN_PATH=$(dirname "$QT_QPA_PLATFORM_PLUGIN_PATH")
-
-                export LD_LIBRARY_PATH=${pkgs.qt5.qtbase}/lib:${pkgs.xorg.libX11}/lib:${pkgs.xorg.libxcb}/lib:${pkgs.libxkbcommon}/lib:${pkgs.libglvnd}/lib:$LD_LIBRARY_PATH
+                # export QT_QPA_PLATFORM_PLUGIN_PATH=${pkgs.libsForQt5.qt5.qtbase}/lib/qt-5.15.16/plugins/platforms
+                # export QT_PLUGIN_PATH=$(dirname "$QT_QPA_PLATFORM_PLUGIN_PATH")
 
                 # Create a symbolic link to the '8.0' directory named 'latest' if it doesn't exist
                 # I added this link in to stop `flutter doctor` complaining - not that it matters really

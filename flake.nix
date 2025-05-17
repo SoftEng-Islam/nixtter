@@ -54,7 +54,7 @@
                 chromium # For web development
 
                 # Android dependencies
-                android-sdk
+                androidsdk
                 # android-studio
                 android-platform-tools
 
@@ -64,8 +64,8 @@
                 libxkbcommon
               ];
               environment.variables = {
-                ANDROID_HOME = "${pkgs.android-sdk}/libexec/android-sdk";
-                ANDROID_SDK_ROOT = "${pkgs.android-sdk}/libexec/android-sdk";
+                ANDROID_HOME = "${pkgs.androidsdk}/libexec/android-sdk";
+                ANDROID_SDK_ROOT = "${pkgs.androidsdk}/libexec/android-sdk";
                 CHROME_EXECUTABLE = "${pkgs.chromium}/bin/chromium";
                 JAVA_HOME = "${pkgs.jdk17}";
               };

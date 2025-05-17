@@ -58,10 +58,6 @@
                 libglvnd
                 libxkbcommon
               ];
-              environment.variables = {
-                CHROME_EXECUTABLE = "${pkgs.chromium}/bin/chromium";
-                JAVA_HOME = "${pkgs.jdk17}";
-              };
               android = {
                 enable = true;
                 platforms.version = [ "34" ];

@@ -30,7 +30,11 @@
 
               # https://devenv.sh/packages/
               packages = with pkgs; [
-                git
+                glibc
+                zlib
+                libGL
+                libpulseaudio
+                stdenv.cc.cc.lib
                 libglvnd
                 libxkbcommon
                 qt5.qtbase
@@ -43,8 +47,28 @@
                 xorg.libXrandr
                 xorg.libXrender
                 xorg.libXtst
-              ];
 
+                flutter
+                jdk17 # Required for Gradle
+                git
+                chromium # For web development
+
+                # Android dependencies
+                android-sdk
+                # android-studio
+                android-platform-tools
+
+                # Graphics dependencies
+                libGL
+                libglvnd
+                libxkbcommon
+              ];
+              environment.variables = {
+                ANDROID_HOME = "${pkgs.android-sdk}/libexec/android-sdk";
+                ANDROID_SDK_ROOT = "${pkgs.android-sdk}/libexec/android-sdk";
+                CHROME_EXECUTABLE = "${pkgs.chromium}/bin/chromium";
+                JAVA_HOME = "${pkgs.jdk17}";
+              };
               android = {
                 enable = true;
                 platforms.version = [ "34" ];

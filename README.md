@@ -1,5 +1,8 @@
 # Flutter environment build using devenv.sh
 
+![Wordpress Home Screen](./Screenshots/flutter.png)
+
+
 Thanks to the amazing work from the [devenv.sh](https://devenv.sh/integrations/android/#emulators) team (thanks Domen!) it is now easy to get a good working flutter environment up in NixOS.
 
 With devenv being usable for other OSes (once nix is installed) it could be a low friction approach for other OSes to use too (untested by me).
@@ -37,9 +40,22 @@ avdmanager create avd -n android-simple -k "system-images;android-34;google_api;
 
 # run the emulator
 emulator -avd android-simple
+# or
+QT_QPA_PLATFORM=xcb emulator -avd android-simple
 
 # enable web if you are going to use flutter for web dev
 flutter config --enable-web
+
+# Create New Flutter Project
+flutter create my_first_project
+cd my_first_project
+
+# Run Flutter on Emulator
+flutter emulators
+flutter emulators --launch <emulator_id>
+
+# Run The Project
+flutter run -d emulator-5554
 
 # start your editor
 codium .

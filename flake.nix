@@ -58,6 +58,16 @@
                 libglvnd
                 libxkbcommon
               ];
+              env = {
+                # ... (your existing env vars)
+
+                # Add these Qt environment variables:
+                QT_QPA_PLATFORM = "xcb";
+                QT_PLUGIN_PATH =
+                  "${pkgs.qt5.qtbase.bin}/${pkgs.qt5.qtbase.qtPluginPrefix}";
+                QML2_IMPORT_PATH =
+                  "${pkgs.qt5.qtbase.bin}/${pkgs.qt5.qtbase.qtQmlPrefix}";
+              };
               android = {
                 enable = true;
                 platforms.version = [ "34" ];
@@ -110,6 +120,11 @@
                 # Qt platform plugin fix
                 export QT_QPA_PLATFORM_PLUGIN_PATH=${pkgs.libsForQt5.qt5.qtbase}/lib/qt-5.15.16/plugins/platforms
                 export QT_PLUGIN_PATH=$(dirname "$QT_QPA_PLATFORM_PLUGIN_PATH")
+
+                # Force software rendering if GPU acceleration fails
+                export QEMU_AUDIO_DRV=none
+                export LIBGL_ALWAYS_SOFTWARE=1
+                export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
 
                 # Create a symbolic link to the '8.0' directory named 'latest' if it doesn't exist
                 # I added this link in to stop `flutter doctor` complaining - not that it matters really

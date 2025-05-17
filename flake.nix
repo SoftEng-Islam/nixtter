@@ -82,9 +82,9 @@
                   enable = true;
                   version = "34.1.9";
                 };
-                sources.enable = false;
+                sources.enable = true;
                 systemImages.enable = true;
-                ndk.enable = false;
+                ndk.enable = true;
                 googleAPIs.enable = true;
                 googleTVAddOns.enable = false;
                 extras = [ ];

@@ -53,19 +53,12 @@
                 git
                 chromium # For web development
 
-                # Android dependencies
-                androidsdk
-                # android-studio
-                android-platform-tools
-
                 # Graphics dependencies
                 libGL
                 libglvnd
                 libxkbcommon
               ];
               environment.variables = {
-                ANDROID_HOME = "${pkgs.androidsdk}/libexec/android-sdk";
-                ANDROID_SDK_ROOT = "${pkgs.androidsdk}/libexec/android-sdk";
                 CHROME_EXECUTABLE = "${pkgs.chromium}/bin/chromium";
                 JAVA_HOME = "${pkgs.jdk17}";
               };
